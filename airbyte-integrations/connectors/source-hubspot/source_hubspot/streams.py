@@ -2643,3 +2643,27 @@ class ProductsWebAnalytics(WebAnalyticsStream):
 class FeedbackSubmissionsWebAnalytics(WebAnalyticsStream):
     def __init__(self, **kwargs: Any):
         super().__init__(parent=FeedbackSubmissions(**kwargs), **kwargs)
+
+
+class ContactProperties(Stream):
+    """Contact Properties, API v3
+    Docs: https://developers.hubspot.com/docs/api/crm/properties
+    """
+
+    url = "/crm/v3/properties/contact"
+    data_field = "results"
+    primary_key = "name"
+    scopes = {"crm.schemas.contacts.read"}
+    filter_old_records = False
+
+
+class CompanyProperties(Stream):
+    """Company Properties, API v3
+    Docs: https://developers.hubspot.com/docs/api/crm/properties
+    """
+
+    url = "/crm/v3/properties/company"
+    data_field = "results"
+    primary_key = "name"
+    scopes = {"crm.schemas.companies.read"}
+    filter_old_records = False
